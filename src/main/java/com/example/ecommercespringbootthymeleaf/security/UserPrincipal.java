@@ -20,6 +20,7 @@ public class UserPrincipal implements UserDetails {
     private Users user;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
+
     public static UserPrincipal create(Users user) {
         Collection<Role> roles = user.getRoles() != null ? user.getRoles():null;
         return UserPrincipal.builder()
