@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Role</title>
+</head>
+<body>
+<h2>Register form</h2>
+
+<form action="#" th:action="@{/role/register}" method="post" th:object="${role}">
+    <label for="code">Code Role:</label><br>
+    <input type="text" id="code" name="code"><br>
+    <label for="name">Name Role:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
