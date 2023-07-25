@@ -1,6 +1,5 @@
 package com.example.ecommercespringbootthymeleaf.controller;
 
-import com.example.ecommercespringbootthymeleaf.model.Role;
 import com.example.ecommercespringbootthymeleaf.model.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
