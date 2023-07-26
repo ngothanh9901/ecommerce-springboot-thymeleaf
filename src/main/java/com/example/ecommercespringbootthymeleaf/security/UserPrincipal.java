@@ -31,6 +31,7 @@ public class UserPrincipal implements UserDetails {
     }
     public static UserPrincipal create(Users user, Map<String, Object> attributes) {
         UserPrincipal userPrincipal = UserPrincipal.create(user);
+
         userPrincipal.setAttributes(attributes);
         return userPrincipal;
     }
