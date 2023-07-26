@@ -41,7 +41,6 @@ public class UserPrincipal implements UserDetails {
     public String getName() {
         return user.getName();
     }
-
     public String getAvatar() {
         return "";
     }
