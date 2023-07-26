@@ -15,12 +15,14 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @Getter
 @Setter
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private AccessDeniedHandler accessDeniedHandler;
     @Qualifier("defaultAuthProvider")
     private AuthenticationProvider defaultAuthProvider;
     @Override
@@ -33,8 +35,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/home", "/about").permitAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll().and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
     @Override
     public void configure(WebSecurity web) {
