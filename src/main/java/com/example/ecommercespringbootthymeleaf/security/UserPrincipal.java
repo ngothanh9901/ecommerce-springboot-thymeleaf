@@ -43,9 +43,6 @@ public class UserPrincipal implements UserDetails {
     public String getAvatar() {
         return "";
     }
-    public int getLoginTimes() {
-        return user.getLoginTimes();
-    }
     @Override
     public String getUsername() {
         return user.getUsername();
