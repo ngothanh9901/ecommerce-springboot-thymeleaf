@@ -18,13 +18,14 @@ public class Category extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
-    private String shortDes;
     private String description;
-    private Double price;
-    private String imageLink;
-    @ManyToMany
-    @JoinTable(name = "category_product", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
-    @JsonIgnore
-    private List<Category> categories;
+
+    public  Category convertToModel(Category category){
+
+        category.setName(this.getName());
+        category.setDescription(this.getDescription());
+        return category;
+    }
 }

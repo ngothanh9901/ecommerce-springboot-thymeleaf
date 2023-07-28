@@ -1,6 +1,7 @@
 package com.example.ecommercespringbootthymeleaf.controller;
 
 import com.example.ecommercespringbootthymeleaf.model.Category;
+import com.example.ecommercespringbootthymeleaf.model.Role;
 import com.example.ecommercespringbootthymeleaf.service.CategoryService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,29 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/category")
+public class CategoryController {
   private final CategoryService categoryService;
-  @GetMapping
-  public String getProduct(){
-//    return "product/addProduct";
-    return "product/list";
-  }
   @GetMapping("/register")
   public String register(Model model) {
     Category category = new Category();
     model.addAttribute("category", category);
-    return "product/register";
+    return "category/register";
   }
   @PostMapping("/register")
   public String onRegister(@ModelAttribute("category") Category category, Model model) {
     categoryService.save(category);
     return "role/role";
   }
-
 }
