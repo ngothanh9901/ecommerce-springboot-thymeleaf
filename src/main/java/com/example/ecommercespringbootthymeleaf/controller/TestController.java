@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
   @GetMapping
   public String test(){
-    return "register";
+    return "order/cart";
   }
 }

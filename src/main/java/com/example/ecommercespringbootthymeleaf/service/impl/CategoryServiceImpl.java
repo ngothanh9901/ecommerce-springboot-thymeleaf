@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,4 +20,10 @@ public class CategoryServiceImpl implements CategoryService {
   public Category save(Category category) {
     return categoryRepository.save(category);
   }
+
+  @Override
+  public List<Category> findAll() {
+    return categoryRepository.findAll();
+  }
+
 }
